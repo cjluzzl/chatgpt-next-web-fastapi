@@ -18,7 +18,6 @@ def auth_headers(authorization: str) -> {bool, str}:
     if not api_key_or_code.startswith(access_code_prefix):
         return {"error": False, "message": "You have key", "api_key": api_key_or_code}
     api_key_or_code = api_key_or_code.replace(access_code_prefix, "")
-    print(api_key_or_code, authorize_code.split(","), api_key_or_code in authorize_code.split(","))
     if api_key_or_code in authorize_code.split(","):
         return {"error": False, "message": "Use System api key", "api_key": settings.OPENAI_API_KEY}
 

@@ -38,7 +38,7 @@ async def chat_stream(
             messages=chat.messages)
     except Exception as e:
         # yield build_stream_msg(e.http_body, True) if e.http_body is not None else build_stream_msg(e.user_message)\
-        raise HTTPException(status_code=500, detail=e)
+        raise HTTPException(status_code=500, detail=str(e))
     else:
         for trunk in response:
             if await request.is_disconnected():
