@@ -9,7 +9,7 @@
     "start": "next start",
     "lint": "next lint",
     "prompts": "node ./scripts/fetch-prompts.mjs",
-    "prepare": "cd .. && husky install ChatGPT-Next-Web/.husky",
+//     "prepare": "cd .. && husky install ChatGPT-Next-Web/.husky",
     "proxy-dev": "sh ./scripts/init-proxy.sh && proxychains -f ./scripts/proxychains.conf yarn dev"
   },
   "dependencies": {
