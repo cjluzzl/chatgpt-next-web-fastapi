@@ -2,10 +2,14 @@
 from functools import lru_cache
 from typing import Optional
 
-from pydantic import BaseSettings
+from pydantic import BaseSettings, Field
 
 
 class Settings(BaseSettings):
+    WEB_HOST: Optional[str] = Field('0.0.0.0', title="web主机")
+    WEB_PORT: Optional[int] = Field(8000, title="web主机端口")
+
+
     openai_api_key: Optional[str]
     code: Optional[str]
     proxy_url: Optional[str]

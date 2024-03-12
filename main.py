@@ -10,6 +10,7 @@ from starlette.responses import JSONResponse
 from api.chat.router import chat_router
 from api.config.router import config_router
 from utils.all_utils import get_now
+from settings.config import settings
 
 # load_dotenv()
 
@@ -77,5 +78,4 @@ async def on_shutdown():
 
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", host="0.0.0.0", port=os.getenv("PORT") if os.getenv("PORT") is not None or "" else 8000,
-                reload=False)
+    uvicorn.run("main:app", host=settings.WEB_HOST, port=settings.WEB_PORT, reload=False)
