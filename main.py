@@ -31,8 +31,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(chat_router, prefix="/api/openai")
-app.include_router(config_router, prefix="/api/config")
+app.include_router(chat_router, prefix="/openai")
+app.include_router(config_router, prefix="/config")
 
 
 @app.get("/")
