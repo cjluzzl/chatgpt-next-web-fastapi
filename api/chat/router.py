@@ -1,7 +1,7 @@
 import requests
 from fastapi import APIRouter, Request, Header, HTTPException
 from sse_starlette import EventSourceResponse
-from starlette.responses import JSONResponse
+from starlette.responses import JSONResponse, StreamingResponse
 
 from api.auth import auth_headers
 from api.chat.chat import chat_stream, chat_not_stream
@@ -22,10 +22,9 @@ async def completions(request: Request, authorization: str = Header(None)):
         raise HTTPException(status_code=401, detail=auth_rep["message"])
 
     if chat_message.stream:
-        return EventSourceResponse(
-            await chat_stream(request, auth_rep["api_key"], chat_message))
-        # return StreamingResponse(chat_stream(request, auth_rep["api_key"], chat_message),
-        #                          media_type="text/event-stream")
+        # return EventSourceResponse(chat_stream(request, auth_rep["api_key"], chat_message))
+        return StreamingResponse(chat_stream(request, auth_rep["api_key"], chat_message),
+                                 media_type="text/event-stream")
     else:
         return JSONResponse(await chat_not_stream(auth_rep["api_key"], chat_message))
 
