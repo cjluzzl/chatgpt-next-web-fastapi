@@ -61,7 +61,7 @@ async def startup_event():
     table = Table(show_header=True, header_style="bold magenta")
     table.add_column("OpenAI API Key", style="dim", width=40)
     table.add_column("CODE", width=40)
-    table.add_row(os.getenv("OPENAI_API_KEY"), os.getenv("CODE"))
+    table.add_row(settings.OPENAI_API_KEY, settings.CODE)
     console.print("You Config Info ⬇️⬇️⬇️")
     console.print(table)
     console.print("欢迎来到 ChatGPT-Next-Web For Python FastApi 😊😊😊")

@@ -10,15 +10,15 @@ class Settings(BaseSettings):
     WEB_PORT: Optional[int] = Field(8000, title="web主机端口")
 
 
-    openai_api_key: Optional[str]
-    code: Optional[str]
-    proxy_url: Optional[str]
+    OPENAI_API_KEY: Optional[str]
+    CODE: Optional[str]
+    PROXY_URL: Optional[str]
 
-    base_url: str = 'https://api.openai.com'
-    openai_org_id: Optional[str]
+    BASE_URL: str = 'https://api.openai.com'
+    OPENAI_ORG_ID: Optional[str]
 
-    hide_user_api_key: Optional[bool] = False
-    disable_gpt4: Optional[bool] = False
+    HIDE_USER_API_KEY: Optional[bool] = False
+    DISABLE_GPT4: Optional[bool] = False
 
     class Config:
         env_file = ".env"
