@@ -1,5 +1,6 @@
 import requests
 from fastapi import APIRouter, Request, Header, HTTPException
+from loguru import logger
 from sse_starlette import EventSourceResponse
 from starlette.responses import JSONResponse, StreamingResponse
 
@@ -22,6 +23,7 @@ async def completions(request: Request, authorization: str = Header(None)):
         raise HTTPException(status_code=401, detail=auth_rep["message"])
 
     if chat_message.stream:
+        logger.info(chat_message.messages)
         # return EventSourceResponse(chat_stream(request, auth_rep["api_key"], chat_message))
         return StreamingResponse(chat_stream(request, auth_rep["api_key"], chat_message),
                                  media_type="text/event-stream")
