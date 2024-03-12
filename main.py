@@ -49,7 +49,7 @@ async def log_requests(request: Request, call_next):
     headers = dict(request.headers)
     client_host = request.client.host
     print(
-        f"ZHB ??*_*  :Time: {get_now()} | Host: {client_host} -> Request headers: \
+        f"FUCK ZHB ??*_*  :Time: {get_now()} | Host: {client_host} -> Request headers: \
         {headers['authorization'] if 'authorization' in headers else 'None'}")
     response = await call_next(request)
     return response

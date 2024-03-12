@@ -5,7 +5,7 @@ from fastapi import Request, HTTPException, Response
 
 from msg.chat_messages import ChatMessages
 from utils.all_utils import build_stream_msg
-
+from loguru import logger
 
 async def chat_not_stream(api_key: str,
                           chat: ChatMessages) -> Response:
@@ -37,6 +37,7 @@ async def chat_stream(
             stream=True,
             messages=chat.messages)
     except Exception as e:
+        logger.error(str(e))
         # yield build_stream_msg(e.http_body, True) if e.http_body is not None else build_stream_msg(e.user_message)\
         raise HTTPException(status_code=500, detail=str(e))
     else:
